@@ -2,13 +2,18 @@
 # -*- coding: utf-8 -*-
 
 MAGIC_NUMBER = 219
+BEGIN_CODE_POINT = ord('a')
+END_CODE_POINT = ord('z')
 
 
 def cipher(letters):
+    '''
+    Atbash - https://en.wikipedia.org/wiki/Atbash
+    '''
     encrypted_letters = []
-    for letter in list(letters):
+    for letter in letters:
         code_point = ord(letter)
-        if code_point >= ord('a') and code_point <= ord('z'):
+        if code_point >= BEGIN_CODE_POINT and code_point <= END_CODE_POINT:
             letter = chr(MAGIC_NUMBER - code_point)
         encrypted_letters.append(letter)
     return ''.join(encrypted_letters)
