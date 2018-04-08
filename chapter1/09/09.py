@@ -4,18 +4,17 @@
 from random import sample
 
 
-def __shuffle(word):
-    if len(word) <= 4:
-        return word
-
-    head = word[0]
-    body = word[1:-1]
-    tail = word[-1]
-    return head + ''.join(sample(body, len(body))) + tail
-
-
 def typoglycemia(sentence):
-    return ' '.join(map(__shuffle, sentence.split()))
+    def shuffle(word):
+        if len(word) <= 4:
+            return word
+
+        head = word[0]
+        body = word[1:-1]
+        tail = word[-1]
+        return head + ''.join(sample(body, len(body))) + tail
+
+    return ' '.join(map(shuffle, sentence.split()))
 
 
 # def typoglycemia(sentence):
