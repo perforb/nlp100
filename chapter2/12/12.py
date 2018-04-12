@@ -30,8 +30,8 @@ def main():
     lines = readlines('../hightemp.txt')
     col1 = cut(lines, 0)
     col2 = cut(lines, 1)
-    write('col1.txt', col1)
-    write('col2.txt', col2)
+    write('../col1.txt', col1)
+    write('../col2.txt', col2)
 
 
 if __name__ == "__main__":
