@@ -2,17 +2,24 @@
 # -*- coding: utf-8 -*-
 
 
-def paste(out_file, input_file1, input_file2):
-    with open(out_file, mode='wt', encoding='utf-8') as out, \
-         open(input_file1, mode='rt', encoding='utf-8') as in1, \
-         open(input_file2, mode='rt', encoding='utf-8') as in2:
+def paste(*input_files):
+    inputs = [open(f, mode='rt', encoding='utf-8') for f in input_files]
+    lines = []
 
-        for a, b in zip(in1, in2):
-            out.write(a.rstrip() + '\t' + b.rstrip() + '\n')
+    for line in zip(*inputs):
+        columns = [column.rstrip() for column in line]
+        lines.append('\t'.join(columns))
+
+    for f in inputs:
+        f.close()
+
+    return '\n'.join(lines)
 
 
 def main():
-    paste('../merge.txt', '../col1.txt', '../col2.txt')
+    with open('../merge.txt', mode='wt', encoding='utf-8') as out:
+        result = paste('../col1.txt', '../col2.txt')
+        out.write(result)
 
 
 if __name__ == "__main__":
