@@ -2,36 +2,30 @@
 # -*- coding: utf-8 -*-
 
 
-def readlines(file_path):
-    with open(file_path, mode='rt', encoding='utf-8') as fh:
-        return fh.readlines()
-
-
-def write(dest_path, contents):
-    with open(dest_path, mode='wt', encoding='utf-8') as fh:
-        fh.write(contents)
-
-
-def cut(lines, index=0):
+def cut(file_path, index=0):
     selected_columns = []
-    for line in lines:
-        if not line:
-            selected_columns.append('')
-            continue
-        columns = line.split()
-        if len(columns) <= index:
-            selected_columns.append('')
-            continue
-        selected_columns.append(columns[index])
+    with open(file_path, mode='rt', encoding='utf-8') as fh:
+        for line in fh:
+            if not line:
+                selected_columns.append('')
+                continue
+            columns = line.split()
+            if len(columns) <= index:
+                selected_columns.append('')
+                continue
+            selected_columns.append(columns[index])
+
     return '\n'.join(selected_columns)
 
 
 def main():
-    lines = readlines('../hightemp.txt')
-    col1 = cut(lines, 0)
-    col2 = cut(lines, 1)
-    write('../col1.txt', col1)
-    write('../col2.txt', col2)
+    with open('../col1.txt', mode='wt', encoding='utf-8') as f1, \
+         open('../col2.txt', mode='wt', encoding='utf-8') as f2:
+
+        col1 = cut('../hightemp.txt', 0)
+        col2 = cut('../hightemp.txt', 1)
+        f1.write(col1)
+        f2.write(col2)
 
 
 if __name__ == "__main__":
