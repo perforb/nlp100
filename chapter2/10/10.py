@@ -3,7 +3,7 @@
 
 
 def number_of_lines(file_path):
-    with open(file_path, 'rt') as fh:
+    with open(file_path, 'rt', encoding='utf-8') as fh:
         return sum(1 for i in fh)
 
 

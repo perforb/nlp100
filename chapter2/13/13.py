@@ -3,15 +3,15 @@
 
 
 def paste(*input_files):
-    inputs = [open(f, mode='rt', encoding='utf-8') for f in input_files]
+    inputs = [open(fh, mode='rt', encoding='utf-8') for fh in input_files]
     lines = []
 
     for line in zip(*inputs):
         columns = [column.rstrip() for column in line]
         lines.append('\t'.join(columns))
 
-    for f in inputs:
-        f.close()
+    for fh in inputs:
+        fh.close()
 
     return '\n'.join(lines)
 
