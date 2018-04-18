@@ -17,9 +17,9 @@ def paste(*input_files):
 
 
 def main():
-    with open('../merge.txt', mode='wt', encoding='utf-8') as out:
+    with open('../merge.txt', mode='wt', encoding='utf-8') as fout:
         result = paste('../col1.txt', '../col2.txt')
-        out.write(result)
+        fout.write(result)
 
 
 if __name__ == "__main__":
