@@ -19,8 +19,8 @@ def main():
     print(union)
     print(intersection)
     print(difference)
-    print("Is 'se' inclueded in x? {}".format('se' in x))
-    print("Is 'se' inclueded in y? {}".format('se' in y))
+    print("in x? {}".format('se' in x))
+    print("in y? {}".format('se' in y))
 
 
 if __name__ == "__main__":
@@ -30,5 +30,5 @@ if __name__ == "__main__":
     # {'ap', 'ra', 'di', 'se', 'gr', 'h', 'pa'}
     # {'ra', 'pa'}
     # {'se', 'di'}
-    # Is 'se' inclueded in x? True
-    # Is 'se' inclueded in y? False
+    # in x? True
+    # in y? False
