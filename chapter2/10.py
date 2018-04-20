@@ -8,7 +8,7 @@ def number_of_lines(file_path):
 
 
 def main():
-    print(number_of_lines('../hightemp.txt'))
+    print(number_of_lines('./hightemp.txt'))
 
 
 if __name__ == "__main__":

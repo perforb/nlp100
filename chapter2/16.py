@@ -25,7 +25,7 @@ def split(input_file, n=10, prefix='out', suffix='.txt'):
 
 def main():
     n = int(sys.argv[1])
-    split('../hightemp.txt', n)
+    split('./hightemp.txt', n)
 
 
 if __name__ == "__main__":

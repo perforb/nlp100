@@ -19,11 +19,11 @@ def cut(file_path, index=0):
 
 
 def main():
-    with open('../col1.txt', mode='wt', encoding='utf-8') as f1, \
-         open('../col2.txt', mode='wt', encoding='utf-8') as f2:
+    with open('./col1.txt', mode='wt', encoding='utf-8') as f1, \
+         open('./col2.txt', mode='wt', encoding='utf-8') as f2:
 
-        col1 = cut('../hightemp.txt', 0)
-        col2 = cut('../hightemp.txt', 1)
+        col1 = cut('./hightemp.txt', 0)
+        col2 = cut('./hightemp.txt', 1)
         f1.write(col1)
         f2.write(col2)
 

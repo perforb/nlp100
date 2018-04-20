@@ -9,7 +9,7 @@ def tail(input_file, n=10):
 
 
 def main():
-    result = tail('../hightemp.txt', 3)
+    result = tail('./hightemp.txt', 3)
     print(result)
 
 

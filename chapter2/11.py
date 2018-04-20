@@ -8,7 +8,7 @@ def readlines(file_path):
 
 
 def main():
-    lines = readlines('../hightemp.txt')
+    lines = readlines('./hightemp.txt')
     lines = ''.join(map(lambda line: line.replace('\t', ' '), lines))
     print(lines)
 

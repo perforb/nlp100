@@ -13,7 +13,7 @@ def head(input_file, n=10):
 
 
 def main():
-    result = head('../hightemp.txt', 3)
+    result = head('./hightemp.txt', 3)
     print(result)
 
 
