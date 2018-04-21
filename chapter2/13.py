@@ -3,7 +3,7 @@
 
 
 def paste(*input_files):
-    inputs = [open(fh, mode='rt', encoding='utf-8') for fh in input_files]
+    inputs = [open(fh, encoding='utf-8') for fh in input_files]
     lines = []
 
     for line in zip(*inputs):

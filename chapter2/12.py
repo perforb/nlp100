@@ -4,7 +4,7 @@
 
 def cut(file_path, index=0):
     selected_columns = []
-    with open(file_path, mode='rt', encoding='utf-8') as fh:
+    with open(file_path, encoding='utf-8') as fh:
         for line in fh:
             if not line:
                 selected_columns.append('')

@@ -3,7 +3,7 @@
 
 
 def readlines(file_path):
-    with open(file_path, 'rt', encoding='utf-8') as fh:
+    with open(file_path, encoding='utf-8') as fh:
         return fh.readlines()
 
 
