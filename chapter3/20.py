@@ -11,12 +11,12 @@ def read(file_path, title):
             if wiki['title'] == title:
                 return wiki
 
-    raise RuntimeError('Given title is not found. {0}'.format(title))
+    raise RuntimeError('specified title is not found. {0}'.format(title))
 
 
 def main():
     wiki = read('./jawiki-country.json', 'イギリス')
-    print(wiki)
+    print(wiki['text'])
 
 
 if __name__ == "__main__":
