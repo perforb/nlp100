@@ -17,11 +17,9 @@ def read(file_path, title):
     raise RuntimeError('specified title is not found. {0}'.format(title))
 
 
-def find_categories(lines):
-    category_lines = [line for line in lines if 'Category' in line]
+def find_categories(article):
     categories = []
-
-    for line in category_lines:
+    for line in article:
         m = CATEGORY_PATTERN.match(line)
         if m:
             categories.append(m.group(1))
@@ -31,8 +29,8 @@ def find_categories(lines):
 
 def main():
     wiki = read('./jawiki-country.json', 'イギリス')
-    lines = wiki['text'].split('\n')
-    categories = find_categories(lines)
+    article = wiki['text'].split('\n')
+    categories = find_categories(article)
     print('\n'.join(categories))
 
 

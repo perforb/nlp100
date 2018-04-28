@@ -16,8 +16,8 @@ def read(file_path, title):
 
 def main():
     wiki = read('./jawiki-country.json', 'イギリス')
-    body = wiki['text']
-    lines = [line for line in body.split('\n') if 'Category' in line]
+    article = wiki['text']
+    lines = [line for line in article.split('\n') if 'Category' in line]
     for line in lines:
         print(line)
 
