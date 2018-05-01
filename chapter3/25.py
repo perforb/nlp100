@@ -5,8 +5,7 @@ import re
 import json
 from pprint import pprint
 
-BASIC_INFO_PATTERN = \
-    re.compile(r'{{基礎情報[^\|]+\|(?P<info>.+?)\n}}', flags=re.DOTALL)
+BASIC_INFO_PATTERN = re.compile(r'{{基礎情報[^\|]+\|(.+?)\n}}', flags=re.DOTALL)
 
 
 def read(file_path, title):
@@ -23,7 +22,7 @@ def extract_basic_info(article):
     basic_info = {}
     m = BASIC_INFO_PATTERN.search(article)
     if m:
-        info_group = m.group('info').split('\n|')
+        info_group = m.group(1).split('\n|')
         for info in info_group:
             key, value = re.split(r'\s+=\s+', info)
             basic_info[key] = value
