@@ -6,6 +6,7 @@ import json
 from pprint import pprint
 
 BASIC_INFO_PATTERN = re.compile(r'{{基礎情報[^\|]+\|(.+?)\n}}', flags=re.DOTALL)
+MARKUP_PATTERN = re.compile(r"'{2,}")
 
 
 def read(file_path, title):
@@ -25,7 +26,7 @@ def extract_basic_info(article):
         info_group = m.group(1).split('\n|')
         for info in info_group:
             key, value = re.split(r'\s+=\s+', info)
-            basic_info[key] = re.sub("''+", '', value)
+            basic_info[key] = MARKUP_PATTERN.sub('', value)
 
     return basic_info
 
