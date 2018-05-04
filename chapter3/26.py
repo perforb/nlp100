@@ -26,15 +26,20 @@ def extract_basic_info(article):
         info_group = m.group(1).split('\n|')
         for info in info_group:
             key, value = re.split(r'\s+=\s+', info)
-            basic_info[key] = MARKUP_PATTERN.sub('', value)
+            basic_info[key] = value
 
     return basic_info
+
+
+def remove_emphasis(basic_info):
+    return {k: MARKUP_PATTERN.sub('', v) for k, v in basic_info.items()}
 
 
 def main():
     wiki = read('./jawiki-country.json', 'イギリス')
     article = wiki['text']
     basic_info = extract_basic_info(article)
+    basic_info = remove_emphasis(basic_info)
     pprint(basic_info, indent=1)
 
 
