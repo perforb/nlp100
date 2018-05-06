@@ -6,8 +6,6 @@ import json
 from pprint import pprint
 
 BASIC_INFO_PATTERN = re.compile(r'{{基礎情報[^\|]+\|(.+?)\n}}', flags=re.DOTALL)
-MARKUP_PATTERN = re.compile(r"'{2,}")
-INTERNAL_LINK_PATTERN = re.compile(r'\[\[([^]]+)\]\]')
 
 
 def read(file_path, title):
@@ -27,32 +25,29 @@ def extract_basic_info(article):
         info_group = m.group(1).split('\n|')
         for info in info_group:
             key, value = re.split(r'\s+=\s+', info)
+            value = remove_emphasis(value)
+            value = remove_internal_link(value)
             basic_info[key] = value
 
     return basic_info
 
 
-def remove_emphasis(basic_info):
-    return {k: MARKUP_PATTERN.sub('', v) for k, v in basic_info.items()}
+def remove_emphasis(value):
+    return re.sub(r"'{2,}", '', value)
 
 
-def remove_internal_link(basic_info):
-    return {
-        k: re.sub(
-            INTERNAL_LINK_PATTERN,
-            lambda m: m.group(1).split('|')[-1],
-            v
-        )
-        for k, v in basic_info.items()
-    }
+def remove_internal_link(value):
+    return re.sub(
+        r'\[\[([^]]+)\]\]',
+        lambda m: m.group(1).split('|')[-1],
+        value
+    )
 
 
 def main():
     wiki = read('./jawiki-country.json', 'イギリス')
     article = wiki['text']
     basic_info = extract_basic_info(article)
-    basic_info = remove_emphasis(basic_info)
-    basic_info = remove_internal_link(basic_info)
     pprint(basic_info, indent=1)
 
 
