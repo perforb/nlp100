@@ -2,4 +2,5 @@
 
 My Language Processing Fungo 100
 
-Original is here: http://www.cl.ecei.tohoku.ac.jp/nlp100/
+This repository is based on the following page:
+http://www.cl.ecei.tohoku.ac.jp/nlp100/
